@@ -40,8 +40,8 @@ async fn handle_connection( addr: SocketAddr,
 async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {
     let (bcast_tx, _) = channel(16);
 
-    let listener = TcpListener::bind("127.0.0.1:2000").await?;
-    println!("listening on port 2000");
+    let listener = TcpListener::bind("127.0.0.1:8080").await?;
+    println!("listening on port 8080");
 
     loop {
         let (socket, addr) = listener.accept().await?;
@@ -49,7 +49,7 @@ async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {
         let bcast_tx = bcast_tx.clone();
         tokio::spawn(async move {
             // Wrap the raw TCP stream into a websocket.
-            let ws_stream = ServerBuilder::new().accept(socket).await?;
+            let (_req, ws_stream) = ServerBuilder::new().accept(socket).await?;
 
             handle_connection(addr, ws_stream, bcast_tx).await
         });

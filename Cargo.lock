@@ -298,6 +298,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "simdutf8"
+version = "0.1.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e3a9fe34e3e7a50316060351f37187a3f546bce95496156754b601a5fa71b76e"
+
+[[package]]
 name = "slab"
 version = "0.4.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -377,9 +383,9 @@ dependencies = [
 
 [[package]]
 name = "tokio-websockets"
-version = "0.8.3"
+version = "0.11.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "842e11addde61da7c37ef205cd625ebcd7b607076ea62e4698f06bfd5fd01a03"
+checksum = "9fcaf159b4e7a376b05b5bfd77bfd38f3324f5fce751b4213bfc7eaa47affb4e"
 dependencies = [
  "base64",
  "bytes",
@@ -389,6 +395,7 @@ dependencies = [
  "http",
  "httparse",
  "sha1_smol",
+ "simdutf8",
  "tokio",
  "tokio-util",
 ]
